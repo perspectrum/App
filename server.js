@@ -24,7 +24,7 @@ app.post('/comment', function(req, res){
       name: req.body.name,
       email: req.body.email,
       comment: req.body.comment
-    }
+    };
     pusher.trigger('flash-comments', 'new_comment', newComment);
     res.json({ created: true });
   });
@@ -43,5 +43,5 @@ app.use(function(req, res, next) {
 module.exports = app;
 
 app.listen(9000, function(){
-  console.log('Example app listening on port 9000!')
+  console.log('Example app listening on port 9000!');
 });
