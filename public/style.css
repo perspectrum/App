@@ -1,35 +1,172 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+  font-family: Muli-Light;
+  src: url('../fonts/Muli-Light.ttf'); 
+}
+@font-face {
+  font-family: Muli-Bold;
+  src: url('../fonts/Muli-Bold.ttf'); 
+}
+
+
+@font-face {
+  font-family: OpenSans-Light;
+  src: url('../fonts/OpenSans-Light.ttf'); 
+}
+
+@font-face {
+  font-family: OpenSans-Regular;
+  src: url('../fonts/OpenSans-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: OpenSans-SemiBold;
+  src: url('../fonts/OpenSans-SemiBold.ttf'); 
+}
+@font-face {
+  font-family: OpenSans-Bold;
+  src: url('../fonts/OpenSans-Bold.ttf'); 
+}
+@font-face {
+  font-family: OpenSans-ExtraBold;
+  src: url('../fonts/OpenSans-ExtraBold.ttf'); 
+}
+
+
+
 body{
     margin:0;
     padding:0;
     overflow: scroll;
-    font-family: Raleway;
+	font-family: OpenSans-Regular;
 }
 
 header{
-    background: #2b303b;
-    height: 50px;
+    background: #5b2d57;
+    height: 85px;
     width:100%;
     display: flex;
     color:#fff;
 }
 
+h2{
+	font-family:OpenSans-Bold;
+	font-size:2rem;
+}
 .flash-logo{
-    height:60px;
+    height:70px;
     border-radius: 8px;
     float: left;
     margin-right: 15px;
 }
-
-
-section{
-    padding: 15px;
-    width:calc(100% - 45px);
+/*----------------------------nav */
+.menu{
+	color:#fff;
+    padding-top: 1.2em;
+	text-align: right;
+	float:right;
 }
 
+ul{
+ float: right;
+}
+li{
+	padding-left:2em;
+	display: inline;
+	color: #fff;
+
+}
+a{
+	font-style:none;
+	text-decoration: none;
+	color: #fff;
+	text-align: right;
+}
+input[type=text] {
+  padding: 6px;
+  border: none;
+  font-size: 1em;
+  height:1.5em;
+  color:black;
+}
+input[type=text]:focus{
+	outline:none;
+	cursor:text;
+}
+
+button {
+  padding: 4px ;
+  padding-left:6px;
+  background: #ddd;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  color:#5b5ba3;
+  background-color:#fff;
+}
+button:hover {
+  background: #ccc;
+}
+section{
+    padding-top:2em;
+	padding-left: 5em;
+}
+.sign-in{
+	font-family: OpenSans-Bold;
+}
+.searching{
+	background-color:#FFF;
+	display:inline;
+	padding:2px;
+}
+
+
+/*---------------------------- */
+.fa-comments{
+	color:#5b5ba3;
+	padding-top:2px;
+	font-size:1.2em;
+}
+.pure-form button[type=submit]{
+	background-color:#5b2d57;
+	font-family: OpenSans-Bold;
+}
+/*----------------------------post */
+.author{
+	font-family:OpenSans-SemiBold;
+			display:inline;
+}
+.title{
+	font-family:OpenSans-Bold;
+	font-size:2em;
+	padding-top:0.5em;
+
+}
+.url{
+	font-family: OpenSans-light;
+	color: #5b5ba3;
+	display:inline;
+	padding-left:1em;
+}
+.url:hover{
+	text-decoration:underline;
+	cursor:pointer;
+	display:inline;
+}
+.description{
+	padding-top:0.5em;
+}
+.fa-clock{
+	color:gray;
+	display:inline;
+}
+/*-----------------------------*/
 .logo img{
-    height: 35px;
-    padding: 6px;
-    margin-left: 20px;
+    height: 50px;
+    padding-top: 1em;
+	padding-left:5em;
 }
 
 
@@ -37,7 +174,6 @@ section{
     border:1px solid #aeaeae;
     border-radius: 10px;
     width:50%;
-    overflow: scroll;
 }
 
 .post{
