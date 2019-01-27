@@ -3,15 +3,12 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 var Pusher = require('pusher');
-var schedule = require('node-schedule');
 
 var config = require('./config.json');
 var newsApiKey = config.newsapi.apikey;
 
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(newsApiKey);
-
-const {performance} = require('perf_hooks');
 
 var pusher = new Pusher({
   appId: '700488',
@@ -25,6 +22,7 @@ pusher.trigger('my-channel', 'my-event', {
   "message": "hello world"
 });
 
+var newsNetworks = ["cbs-news","abc-news","the-new-york-times","cnn,the-guardian-uk","newsweek","bloomberg","politico","bbc-news","nbc-news","associated-press","the-economist","reuters,usa-today","fox-news","national-review"];
 var app = express();
 
 var comments = [];
@@ -101,8 +99,9 @@ setInterval(function(){
   
 
 function getDailyArticle(){
+    var randomNetwork = newsNetworks[Math.floor(Math.random() * newsNetworks.length)];
     newsapi.v2.topHeadlines({
-    sources: 'breitbart-news,bbc-news,the-verge',
+    sources: randomNetwork,
     language: 'en',
   }).then(response => {
     var dateNow = new Date();
