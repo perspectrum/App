@@ -18,6 +18,8 @@
   "homepage": "https://github.com/perspectrum/App#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "mongoose": "^5.4.7",
+    "newsapi": "^2.4.0",
     "pusher": "^2.2.0"
   }
 }
