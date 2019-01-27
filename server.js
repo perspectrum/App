@@ -28,10 +28,8 @@ pusher.trigger('my-channel', 'my-event', {
 var app = express();
 
 var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
-mongoose.connect( process.env.MONGOURL || config.MONGOURL );
 
-mongoose.connect('mongodb://localhost:27017/perspectrum', function(err, client) {
+mongoose.connect(( process.env.MONGOURL || config.MONGOURL ), function(err, client) {
     if(err) {
         console.log(err)
     }
@@ -124,7 +122,7 @@ function isEmptyObject(obj) {
   
 
 module.exports = app;
-
-app.listen(80, function(){
-  console.log('Example app listening on port 9000!');
+var port = 8080;
+app.listen(port, function(){
+  console.log('Example app listening on port ' + port + "!");
 });

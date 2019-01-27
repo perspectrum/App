@@ -3,9 +3,16 @@
 
 <head>
     <title>Making Social Comments Realtime & Fun with Pusher using Javascript like the Flash</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD"
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:200">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/Perspectrum-Logo.png"/>
+	
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -34,23 +41,45 @@
 <body>
     <header>
         <div class="logo">
-            <img src="./assets/pusher-logo.png" />
+			<a href="">
+				<img src="./images/Perspectrum-Logo5.png" />
+			</a>
         </div>
-        <div class="menu">
 
-        </div>
+		<nav  class="menu" role="navigation" aria-label="Primary">
+			<ul>
+				<li>
+					<a href="">POLITICAL SPECTRUM</a>
+				</li>
+				<li>
+					<a href="">ABOUT US</a>
+				</li>
+				<li>
+					<div class="searching">
+						<input type="text" placeholder="SEARCH..." name="search">
+						<button type="submit"><i class="fa fa-search"></i></button>
+					</div>
+				</li>
+				<li>
+					<a class="sign-in" href="">	<i class="fa fa-user-circle"></i> SIGN IN</a>
+				</li>
+
+			</ul>
+		</nav>
+
     </header>
     <section>
-        <img class="flash-logo" src="./assets/flash-logo.jpg" />
-        <h2>Flash Comments - Super Fast</h2>
+		<div><i class="fa fa-clock"></i> </div>
         <div class="post" id="article">
             <script id="article-template" type="text/x-template">
                 <div class="user-icon">
                     <img src={{imageurl}} />
                 </div>
-                <div class="author">{{author}}</div>
+
                 <div class="title">{{title}}</div>
+				<div class="author">{{author}}</div>
                 <div class="url">{{url}}</div>
+				<div class="date">{{date}}</div>
                 <div class="description">{{description}}</div>
 
             </script>
@@ -60,7 +89,7 @@
 
         <div class="flash-comments">
             <div class="header">
-                <div><img src="./assets/comments.png"></div>
+                <div><i class="fa fa-comments"></i></div>
                 <div class="text">Comments</div>
             </div>
             <form class="pure-form" id="comment-form">
@@ -75,25 +104,25 @@
                         </div>
                     </div>
                     <div class="right-side">
-                        <button type="submit" class="button-secondary pure-button">Send Comment</button>
+                        <button type="submit" class="button-secondary pure-button">REPLY</button>
                     </div>
                 </div>
             </form>
             <div class="comments-list" id="comments-list">
                 <script id="comment-template" type="text/x-template">
-                    <div class="user-icon">
-                                <img src="./assets/user.png" />
-                            </div>
-                            <div class="comment-info">
-                                <div class="row">
-                                    <div class="name">{{name}}</div>
-                                    <div class="email">{{email}}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="text">{{comment}}</div>
-                                </div>
-                            </div>
-                        </script>
+                    <div>
+<					  <i class="fa fa-user"></i>
+                    </div>
+					<div class="comment-info">
+						<div class="row">
+							<div class="name">{{name}}</div>
+							<div class="email">{{email}}</div>
+						</div>
+						<div class="row">
+							<div class="text">{{comment}}</div>
+						</div>
+					</div>
+                </script>
             </div>
         </div>
     </section>
