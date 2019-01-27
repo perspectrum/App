@@ -12,6 +12,8 @@ var pusher = new Pusher({
     useTLS: true
 });
 
+var comments = [];
+
 var app = express();
 
 app.use(bodyParser.json());
@@ -19,17 +21,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/comment', function(req, res){
-  console.log("fuck u");    
-  console.log(req.body);
-  console.log(req.body.comment);
-  
+  console.log(req.body);  
   var newComment = {
     name: req.body.name,
     email: req.body.email,
     comment: req.body.comment
   };
+  comments.push(newComment);
   pusher.trigger('flash-comments', 'new_comment', newComment);
   res.json({ created: true });
+});
+
+app.get('/getComments', function(req, res){
+  res.json(comments);
 });
 
 // Error Handler for 404 Pages
