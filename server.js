@@ -3,6 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 var Pusher = require('pusher');
+var schedule = require('node-schedule');
 
 var config = require('./config.json');
 var newsApiKey = config.newsapi.apikey;
@@ -10,22 +11,37 @@ var newsApiKey = config.newsapi.apikey;
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(newsApiKey);
 
+const {performance} = require('perf_hooks');
 
 var pusher = new Pusher({
-    appId: '700488',
-    key: '7e702683ef693aa93027',
-    secret: '031dc5769c6550b2d9c8',
-    cluster: 'us2',
-    useTLS: true
+  appId: '700488',
+  key: '7e702683ef693aa93027',
+  secret: '031dc5769c6550b2d9c8',
+  cluster: 'us2',
+  encrypted: true
 });
 
-var comments = [];
+pusher.trigger('my-channel', 'my-event', {
+  "message": "hello world"
+});
 
 var app = express();
 
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/perspectrum");
+//mongoose.connect("mongodb://localhost:27017/perspectrum");
+
+mongoose.connect('mongodb://localhost:27017/perspectrum', function(err, client) {
+    if(err) {
+        console.log(err)
+    }
+
+    client.db.listCollections().toArray(function(err, collections) {
+        if(isEmptyObject(collections) == true){
+            getDailyArticle();
+        }
+    });
+});
 
 var articleSchema = new mongoose.Schema({
     source : {id: String, name: String},
@@ -39,25 +55,20 @@ var articleSchema = new mongoose.Schema({
 
 var Article = mongoose.model("Article", articleSchema);
 
+app.post('/comment', function(req, res){
+    console.log(req.body);
+    var newComment = {
+      name: req.body.name,
+      email: req.body.email,
+      comment: req.body.comment
+    }
+    pusher.trigger('flash-comments', 'new_comment', newComment);
+    res.json({ created: true });
+  });
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.post('/comment', function(req, res){
-  console.log(req.body);  
-  var newComment = {
-    name: req.body.name,
-    email: req.body.email,
-    comment: req.body.comment
-  };
-  comments.push(newComment);
-  pusher.trigger('flash-comments', 'new_comment', newComment);
-  res.json({ created: true });
-});
-
-app.get('/getComments', function(req, res){
-  res.json(comments);
-});
 
 app.get('/getarticle', function(req, res){
     var dateNow = new Date();
@@ -77,16 +88,16 @@ app.use(function(req, res, next) {
     next(error404);
 });
 
-// Article.find({publishedAt: somedate}, function(err,article){
-//     if(err) throw err;
-//     console.log(article);
-// });
+setInterval(function(){
+    getDailyArticle();
+}, 1000 * 60 * 60 * 24);
+  
 
-newsapi.v2.topHeadlines({
+function getDailyArticle(){
+    newsapi.v2.topHeadlines({
     sources: 'breitbart-news,bbc-news,the-verge',
     language: 'en',
   }).then(response => {
-    //console.log(response.articles[0]);
     var dateNow = new Date();
     var stringDate =  (dateNow.getMonth()+1).toString() + "-" + dateNow.getDate().toString() + "-" + dateNow.getFullYear().toString();
     var myData = new Article({
@@ -104,9 +115,15 @@ newsapi.v2.topHeadlines({
     }
     });
   });
+}
+
+function isEmptyObject(obj) {
+    return !Object.keys(obj).length;
+  }
+  
 
 module.exports = app;
 
 app.listen(9000, function(){
-  console.log('Example app listening on port 9000!');
+  console.log('Example app listening on port 9000!')
 });
