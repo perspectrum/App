@@ -43,9 +43,17 @@
     <section>
         <img class="flash-logo" src="./assets/flash-logo.jpg" />
         <h2>Flash Comments - Super Fast</h2>
-        <div class="post">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/mM8s0k4H92U" frameborder="0"
-                allowfullscreen></iframe>
+        <div class="post" id="article">
+            <script id="article-template" type="text/x-template">
+                <div class="user-icon">
+                    <img src={{imageurl}} />
+                </div>
+                <div class="author">{{author}}</div>
+                <div class="title">{{title}}</div>
+                <div class="url">{{url}}</div>
+                <div class="description">{{description}}</div>
+
+            </script>
         </div>
     </section>
     <section>
