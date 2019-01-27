@@ -161,7 +161,8 @@ section{
 	display:inline;
 }
 .description{
-	padding-top:0.5em;
+    padding-top:0.5em;
+    padding-right:7em;
 }
 .date{
 	color:gray;
@@ -182,11 +183,11 @@ p {
 	display:inline;
 	color:#5b5ba3;
 
-	margin-left:40em;
+	margin-left:31em;
 }
 
 .social{
-	color:#5b5ba3;
+    color:#5b5ba3;
 }
 .social:hover{
 	color:#9bc695;
@@ -216,13 +217,14 @@ img {
 }
 .im{
 	width:310px;
-	height:163px;
+    height:163px;
+    padding-top:5px;
 }
 
 .past{
 	margin-left:4em;
 	width:20%;
-	background-color:#5b2d57;
+
 }
 .discussions{
 	margins:0;
@@ -231,7 +233,8 @@ img {
     margin-block-end: 0;
 	font-family: OpenSans-Bold;
 	color:#FFF;
-	padding-left:1em;
+    padding-left:1em;
+    background-color:#5b2d57;
 	
 }
 .flash-comments .header{
