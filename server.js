@@ -129,7 +129,7 @@ function isEmptyObject(obj) {
   
 
 module.exports = app;
-var port = 8080;
+var port = 80;
 app.listen(port, function(){
   console.log('Example app listening on port ' + port + "!");
 });

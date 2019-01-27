@@ -220,7 +220,12 @@ img {
     height:163px;
     padding-top:5px;
 }
-
+.spectrum{
+    color:red;
+    padding-left:0;
+    font-size:0.7em;
+    padding-bottom:1em;
+}
 .past{
 	margin-left:4em;
 	width:20%;
