@@ -158,9 +158,8 @@ section{
 .description{
 	padding-top:0.5em;
 }
-.fa-clock{
+.date{
 	color:gray;
-	display:inline;
 }
 /*-----------------------------*/
 .logo img{
