@@ -67,15 +67,17 @@ h2{
     padding-top: 1.2em;
 	text-align: right;
 	float:right;
+	padding-left:5em;
 }
 
 ul{
  float: right;
 }
 li{
-	padding-left:2em;
+	padding-left:1.5em;
 	display: inline;
 	color: #fff;
+	font-size:0.9em;
 
 }
 a{
@@ -133,6 +135,11 @@ section{
 	background-color:#5b2d57;
 	font-family: OpenSans-Bold;
 }
+.pure-form button[type=submit]:focus{
+	background-color:gray;
+}
+
+
 /*----------------------------post */
 .author{
 	font-family:OpenSans-SemiBold;
@@ -140,15 +147,13 @@ section{
 }
 .title{
 	font-family:OpenSans-Bold;
-	font-size:2em;
-	padding-top:0.5em;
+	font-size:2.2em;
 
 }
 .url{
 	font-family: OpenSans-light;
 	color: #5b5ba3;
 	display:inline;
-	padding-left:1em;
 }
 .url:hover{
 	text-decoration:underline;
@@ -160,6 +165,36 @@ section{
 }
 .date{
 	color:gray;
+	display:inline;
+}
+p {
+	display:inline;
+	padding-left:2em;
+	padding-right:0.3em;
+}
+.break{
+  border-bottom: 2px double #5b5ba3;
+  margin-right:5.4em;
+  padding-top:0.5em;
+  padding-bottom:0.5em;
+}
+.share{
+	display:inline;
+	color:#5b5ba3;
+
+	margin-left:40em;
+}
+
+.social{
+	color:#5b5ba3;
+}
+.social:hover{
+	color:#9bc695;
+	cursor:pointer;
+}
+
+.past{
+	display:inline;
 }
 /*-----------------------------*/
 .logo img{
@@ -168,17 +203,37 @@ section{
 	padding-left:5em;
 }
 
-
+.container{
+	display:flex;
+}
 .flash-comments{
     border:1px solid #aeaeae;
     border-radius: 10px;
-    width:50%;
+    width:60%;
+}
+img {
+	display:block;
+}
+.im{
+	width:310px;
+	height:163px;
 }
 
-.post{
-    padding-top:10px;
+.past{
+	margin-left:4em;
+	width:20%;
+	background-color:#5b2d57;
 }
-
+.discussions{
+	margins:0;
+	padding:0;
+	margin-block-start: 0;
+    margin-block-end: 0;
+	font-family: OpenSans-Bold;
+	color:#FFF;
+	padding-left:1em;
+	
+}
 .flash-comments .header{
     display: flex;
     padding: 5px 20px;
