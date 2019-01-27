@@ -118,7 +118,9 @@
             console.log("Success: " + xhr.responseText);
             commentForm.reset();
         };
-        xhr.send(JSON.stringify(newComment));
+        var sending = JSON.stringify(newComment);
+        console.log(sending);
+        xhr.send(sending);
     }
 
 })();

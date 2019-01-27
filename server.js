@@ -27,11 +27,16 @@ pusher.trigger('my-channel', 'my-event', {
 
 var app = express();
 
+var comments = [];
+app.get('/getComments', function(req, res){
+  res.json(comments);
+});
+
 var mongoose = require("mongoose");
 
 mongoose.connect(( process.env.MONGOURL || config.MONGOURL ), function(err, client) {
     if(err) {
-        console.log(err)
+        console.log(err);
     }
 
     client.db.listCollections().toArray(function(err, collections) {
@@ -53,20 +58,23 @@ var articleSchema = new mongoose.Schema({
 
 var Article = mongoose.model("Article", articleSchema);
 
-app.post('/comment', function(req, res){
-    console.log(req.body);
-    var newComment = {
-      name: req.body.name,
-      email: req.body.email,
-      comment: req.body.comment
-    }
-    pusher.trigger('flash-comments', 'new_comment', newComment);
-    res.json({ created: true });
-  });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.post('/comment', function(req, res) {
+
+    var newComment = {
+      name: req.body.name,
+      email: req.body.email,
+      comment: req.body.comment
+    };
+    comments.push(newComment);
+    pusher.trigger('flash-comments', 'new_comment', newComment);
+    res.json({ created: true });
+  });
 
 app.get('/getarticle', function(req, res){
     var dateNow = new Date();
