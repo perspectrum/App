@@ -53,6 +53,7 @@
             newArticleTemplate = newArticleTemplate.replace('{{url}}', json.url);
             newArticleTemplate = newArticleTemplate.replace('{{imageurl}}', json.urlToImage);
             newArticleTemplate = newArticleTemplate.replace('{{description}}', json.description);
+            newArticleTemplate = newArticleTemplate.replace('{{date}}', json.date);
 
 
             console.log(newArticleTemplate);
